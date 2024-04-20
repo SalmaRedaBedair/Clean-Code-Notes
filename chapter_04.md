@@ -3,25 +3,24 @@
 comments are failure
 ```
 - comments are always failure, we should always try to express ourselves in code, avoid using comments
-- the more older comments is and the further away from the thing it descripe, the more its just plain wrong
-- bad comments are evail because programmers whill not maintan them
+- we might write code to describe function and make some updated to that function and forget updating comment, then that code now is misleading
+- the more older comments is and the further away from the thing it describe, the more its just plain wrong
+- bad comments are evil because programmers will not maintain them
 - the energy used to maintain bad comments should be used to maintain code, we don't need comments in forst place
 - inaccurate comments worse than no comments
 - `truth can only be found in one place: the code`
   - the code can truly tell you what it does
   - it is the only source of accurate information
-  - comments are sometimes necessary but we will pay alot of energy to minimize them
-
+  - comments are sometimes necessary but we will pay a lot of energy to minimize them
 ## comments don't make make up for bad code
 - one of the common motivation for writing comments is bad code
 - when you write bad code, you will comment it and try to write another code
 - you shouldn't comment thet code, you should rewrite it
 - when you write bad code, you try to express it using comments, rather than spending time writing comments to express bad code, spend that time to clean it.
-
 ## explain yourself in code
 - instead of writing comments to express part of code, make function say the same as comment say 
 - notice the difference:
-```java
+```php
 // Check to see if the employee is eligible for full benefits
 if ((employee.flags & HOURLY_FLAG) && 
  (employee.age > 65)) 
@@ -30,10 +29,6 @@ if (employee.isEligibleForFullBenefits())
 ```
 
 ## good comments
-```text
-the only good comment is the comment that you have no way to write it
-```
-
 ### legal comments
 - sometimes, we are forced to to write legal comments
 - ex: copyright, authorship
@@ -48,19 +43,15 @@ Pattern timeMatcher = Pattern.compile(
  "\\d*:\\d*:\\d* \\w*, \\w* \\d*, \\d*");
 ```
 - but it might be cleaner if i pass special class that convert the formats of date and time
-
 ### explanation of intent
 - sometimes comments are useful when it explain the intent of hard idea of code
-
 ### clarification 
 - sometimes comments are useful when it clarify the part of code or variable or function name
 - it is better to name that variable or function with name easy to understand
 - but if that name is from library or if you haven't access to alter it then a helpful clarifying comment is useful
-
 ### warning consequences
-- sometimes i want to warn about the consequences of bad code
-- i write comment to warn other programmers from using that function because it take long time for ex
-
+- sometimes i want to warn about the consequences of that code
+- like: i write comment to warn other programmers from using that function because it take long time
 ### TODO comments
 - they are jobs that programmer should do but for some reason can't do at the moment
 - it is written like that
@@ -87,10 +78,10 @@ most comments fall here
 ```
 ### Mumbling
 - if you decide to write comment spend more time to think of that comment and try to not use it.
+- never to use comment because of your desire to write comment
 
 ### redundant comments
-- add nothing do the code, code is easier to understand 
-
+- add nothing do the code, code must be easier to understand
 ### Misleading comments
 - comment is not accurate describing the function
 - it say wrong thing about that function 
@@ -113,7 +104,6 @@ if(!closed)
 - comments have no benefits
 - they add nothing to understanding the code
 - like javadocs
-
 ### journal comments
 - add comments to tell when i go something in module
 - it like comments now days
@@ -224,7 +214,8 @@ private String info;
 ```
 ### Nonlocal Information
 - if you have to put comment then make it describe the function 
-- don't offer system wide information, like port number
+- don't write comment to describe something far from the usage of function
+- like offer system wide information, like port number, why to write it in code?
 ```php
 /**
  * Port on which fitnesse would run. Defaults to <b>8082</b>.
@@ -235,9 +226,31 @@ public void setFitnessePort(int fitnessePort)
 {
 this.fitnessePort = fitnessePort;
 }
+// here default port is not updated here, it is updated throw configuration of server
+// i might change it in configuration of server and still the same in code
+// default port is not updated in that part of code then never add comment to describe it here
 ```
 ### Too Much Information
 - don't add any historical discussion or irrelevant description details into your comment
+- never to add long comments they will, i will always ignore them and read the function 
+- like that:
+```php
+/*
+ RFC 2045 - Multipurpose Internet Mail Extensions (MIME) 
+ Part One: Format of Internet Message Bodies
+ section 6.8. Base64 Content-Transfer-Encoding
+ The encoding process represents 24-bit groups of input bits as output 
+ strings of 4 encoded characters. Proceeding from left to right, a 
+ 24-bit input group is formed by concatenating 3 8-bit input groups. 
+ These 24 bits are then treated as 4 concatenated 6-bit groups, each 
+ of which is translated into a single digit in the base64 alphabet. 
+ When encoding a bit stream via the base64 encoding, the bit stream 
+ must be presumed to be ordered with the most-significant-bit first. 
+ That is, the first bit in the stream will be the high-order bit in 
+ the first 8-bit byte, and the eighth bit will be the low-order bit in 
+ the first 8-bit byte, and so on.
+ */
+```
 ### Inobvious Connection
 - comment must add some information to clarify the function
 - never to add comment that can't be understand like function 
